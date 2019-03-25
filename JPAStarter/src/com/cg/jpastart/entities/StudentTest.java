@@ -12,8 +12,8 @@ public class StudentTest {
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
 		Student student = new Student();
-		student.setName("John");
-		
+		student.setName("Johny");
+		student.setStudentId(102);
 		em.persist(student);
 		em.getTransaction().commit();
 		
