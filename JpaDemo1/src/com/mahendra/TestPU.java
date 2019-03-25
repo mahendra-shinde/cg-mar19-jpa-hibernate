@@ -19,7 +19,11 @@ public class TestPU {
 		System.out.println("Trying Insert operations");
 		testInsert(em);
 		System.out.println("Searching product by name!");
+		
+		System.out.println("Delete operation: ");
 		testSearch(em);
+		
+		
 		em.close();
 	}
 	static void testInsert(EntityManager em) {
@@ -56,5 +60,20 @@ public class TestPU {
 		Query q = em.createQuery("select p from Product p where p.name = 'Dove'");
 		Product p = (Product) q.getResultList().get(0);
 		System.out.println("Found "+p.getName()+", it's price is "+p.getPrice());
+	}
+	static void testDelete(EntityManager em)
+	{
+		System.out.println("Deleting product 102");
+		EntityTransaction tn = em.getTransaction();
+		try {
+			tn.begin();
+			Product temp = em.find(Product.class, 102);
+			em.remove(temp);
+			tn.commit();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			if(tn!=null)
+				tn.rollback();	
+		}
 	}
 }
