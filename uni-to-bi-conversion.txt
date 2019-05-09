@@ -1,0 +1,23 @@
+How to convert "Uni" directional into "Bi" directional associations
+
+
+1. Locate the Entity class which contains "OneToOne" or "ManyToOne" or "ManyToMany" annotations
+	ex. Class "Student" contains "OneToOne" annotation
+
+2. Locate the OTHER entity used by Association mapping annotation
+	ex. Student is Mapped to "Address" using OneToOne annotation
+
+3. Note down the property name (variable name) assigned to the OTHER entity
+	ex. In Student class, property "address" is assigned OneToOne
+
+4. Open the OTHER entity
+	ex. Open "Address" class
+
+5. Add new property that refers to First entity with matching annotation
+	use "mappedBy" to provide a reference, use var-name from step# 3
+	ex.
+		@OneToOne(mappedBy="address")
+		private Student student;
+6. Generate Getter/Setters for new property
+
+
