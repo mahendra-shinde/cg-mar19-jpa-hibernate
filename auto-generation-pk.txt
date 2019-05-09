@@ -1,0 +1,25 @@
+Auto-generation of Unique values for Primary Keys
+
+	Oracle DB    		Other DB's
+	Sequence		auto_increment
+	Start Can be defined	Start, End and Increment are 
+	End Can be set		predefined (Start at 1, Increment by 1)
+	Increment can be set
+
+
+   Create Sequence in Oracle DB:
+	 create sequence seq1 start with 1 increment by 1 nocache;
+
+
+   Add a reference of sequence in JPA Entity class
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="s1")
+	@SequenceGenerator(sequenceName="seq1",name="s1",allocationSize=1)
+
+	PS: Throws an Exception if sequence "seq1" doesnot exists!
+
+
+	Country (country_id PK, cname, capital, currency)
+	Create CountryDAO with CRUD 
+		findCountryByName, findCountryByCurrency
+

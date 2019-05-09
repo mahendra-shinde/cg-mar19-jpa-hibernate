@@ -1,0 +1,19 @@
+JPQL 			v/s 		SQL
+
+Returns OBJECT			Returns ResultSet
+and LIST			Which has to be manually converted into Object/List
+
+Uses Entity Classes		Uses Table and Column names
+and Properties
+
+Supports 			Supports:	
+  UPDATE, DELETE, SELECT		CREATE, ALTER, DROP, SELECT, INSERT,UPDATE
+
+Database Platform Independent	Database Platform Dependent
+  Can use ANY database			Changing Database requires changing
+						queries
+
+Examples:			Examples:	
+
+  select e from	Employee e	Select * from emps 	
+	
